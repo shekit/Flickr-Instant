@@ -1,0 +1,47 @@
+<head>
+  <title>Flickr Instant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 text-center">
+				<img src="/logo.png" class="img-responsive img-center logo" width="230">
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-sm-12 col-md-6 text-center">
+				{{> flickr}}
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<br>
+				<p class="small">Built by <a href="https://twitter.com/ashekshek" target="blank">@ashekshek</a></p>
+			</div>
+		</div>
+	</div>	
+</body>
+
+<template name="flickr">
+		<div class="row">
+			<div class="col-xs-10 search-bar-left">
+				<input type="text" class="form-control input-lg" id="search" placeholder="Search Flickr Instantly">
+			</div>
+			<div class="col-xs-2 search-bar-right">
+				<a href="#" class="btn btn-tiny btn-default checkbox pull-right"><img src="/cc-on.png" width="24" class="cc on"></a> 
+			</div>
+		</div>
+			
+
+		
+
+ 
+  <br><br>
+  <img src="/placeholder.png" id="image" class="img-responsive img-center">
+</template>

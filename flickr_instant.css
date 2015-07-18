@@ -1,0 +1,40 @@
+/* CSS declarations go here */
+
+#search {
+	box-shadow: none;
+	border-radius: 0;
+	text-align: center;
+}
+
+.img-center{
+	margin-top: 20px;
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.logo {
+	margin-bottom: 40px;
+}
+
+.checkbox {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 0px;
+	margin-top: 0;
+	width: 100%
+}
+
+.search-bar-left{
+	padding-right: 0
+}
+
+.search-bar-right {
+	padding-left: 0;
+}
+
+#image {
+	
+	border: 1px solid #ccc;
+	box-shadow: 0 0 2px #ddd;
+}
