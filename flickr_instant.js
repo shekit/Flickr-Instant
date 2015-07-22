@@ -48,6 +48,10 @@ if (Meteor.isClient) {
   	})
 }
 
+Router.configure({
+	trackPageView: true
+});
+
 Router.route('/', function(){
 	this.render('flickr');
 })
