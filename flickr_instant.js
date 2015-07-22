@@ -25,13 +25,11 @@ if (Meteor.isClient) {
   			$("#search").focus();
   		},
 
-	  	'keyup #search':function(event){
+	  	'keyup #search': _.throttle(function(event){
 	  		var query = event.target.value.trim();
 	  		query = query.replace(/\s/g,"+");
 
 	  		if(query){
-	  			console.log(query);
-	  			console.log(commons);
 	  			Meteor.call('flickrInstant', query, commons, function(err, res){
 	  				//console.log(err);
 	  				// console.log(res);
@@ -45,10 +43,14 @@ if (Meteor.isClient) {
 	  		} else {
 	  			$("#image").attr("src", "/placeholder.png");
 	  		}
-	  	}
+	  	},200)
 
   	})
 }
+
+Router.route('/', function(){
+	this.render('flickr');
+})
 
 if (Meteor.isServer) {	
 
@@ -73,15 +75,18 @@ if (Meteor.isServer) {
 		'flickrInstant': function(query, commons){
 			this.unblock();
 			var apiUrl = "";
+			//date-posted-asc, date-posted-desc, date-taken-asc, date-taken-desc, interestingness-desc, interestingness-asc, and relevance
+			var sortOrder = ["date-posted-asc", "date-posted-desc", "date-taken-asc", "relevance", "interestingness-desc", "interestingness-asc", "date-taken-desc"]
+			var sort = sortOrder[Math.floor(Math.random()*(sortOrder.length))];
 			// doesnt work if you change is_commons in url to false
 			if(commons){
-				apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+key+"&text="+query+"&sort=interestingness-desc&privacy_filter=1&content_type=1&media=photos&is_commons=true&per_page=1&format=json&nojsoncallback=1"
+				apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+key+"&text="+query+"&sort="+sort+"&privacy_filter=1&content_type=1&media=photos&is_commons=true&per_page=1&format=json&nojsoncallback=1"
 			} else {
-				apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+key+"&text="+query+"&sort=interestingness-desc&privacy_filter=1&content_type=1&media=photos&per_page=1&format=json&nojsoncallback=1"
+				apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+key+"&text="+query+"&sort="+sort+"&privacy_filter=1&content_type=1&media=photos&per_page=1&format=json&nojsoncallback=1"
 			}
 
 			//var apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+key+"&text="+query+"&sort=interestingness-desc&privacy_filter=1&content_type=1&media=photos&is_commons="+is_commons+"&per_page=1&format=json&nojsoncallback=1"
-			console.log(apiUrl);
+			//console.log(apiUrl);
 			var response = Meteor.wrapAsync(apiCall)(apiUrl);
 			
 			//response = "https://www.flickr.com/photos/"+response["owner"]+"/"+response["id"];
