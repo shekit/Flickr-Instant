@@ -1,9 +1,19 @@
 <head>
   <title>Flickr Instant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65411265-2', 'auto');
+  ga('send', 'pageview');
+
+	</script>
 </head>
 
-<body>
+<template name="main">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3"></div>
@@ -15,28 +25,31 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-sm-12 col-md-6 text-center">
-				{{> flickr}}
+				{{> yield}}
 			</div>
 			<div class="col-md-3"></div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12 text-center">
 				<br>
-				<p class="small">Built by <a href="https://twitter.com/ashekshek" target="blank">@ashekshek</a></p>
+				<p class="small">Built by <a href="https://twitter.com/ashekshek" target="blank">@ashekshek</a>. No searches or images are saved.</p>
 			</div>
 		</div>
 	</div>	
-</body>
+</template>
 
 <template name="flickr">
 	<div class="row">
 		<div class="col-xs-10 search-bar-left">
 			<input type="text" class="form-control input-lg" id="search" placeholder="Search Flickr Instantly">
+
 		</div>
 		<div class="col-xs-2 search-bar-right">
-			<a href="#" class="btn btn-tiny btn-default checkbox pull-right"><img src="/cc-on.png" width="24" class="cc on"></a> 
+			<a href="#" class="btn btn-tiny btn-default checkbox pull-right"><img src="/cc-off.png" width="24" class="cc off"></a> 
 		</div>
 	</div>
-  <br><br>
   <img src="/placeholder.png" id="image" class="img-responsive img-center">
+
 </template>
+
+

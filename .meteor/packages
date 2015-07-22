@@ -8,4 +8,3 @@ meteor-platform
 http
 twbs:bootstrap
 iron:router
-reywood:iron-router-ga

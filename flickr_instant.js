@@ -1,10 +1,11 @@
 if (Meteor.isClient) {
 
-	var commons = true;
+	var commons = false;
+
 
 	Template.flickr.onRendered(function(){
 		$("#search").focus();
-	})
+	});
 
   	Template.flickr.events({
   		
@@ -49,7 +50,8 @@ if (Meteor.isClient) {
 }
 
 Router.configure({
-	trackPageView: true
+	//trackPageView: true,
+	layoutTemplate: 'main'
 });
 
 Router.route('/', function(){
@@ -80,7 +82,7 @@ if (Meteor.isServer) {
 			this.unblock();
 			var apiUrl = "";
 			//date-posted-asc, date-posted-desc, date-taken-asc, date-taken-desc, interestingness-desc, interestingness-asc, and relevance
-			var sortOrder = ["date-posted-asc", "date-posted-desc", "date-taken-asc", "relevance", "interestingness-desc", "interestingness-asc", "date-taken-desc"]
+			var sortOrder = ["date-posted-desc", "relevance", "interestingness-desc"]
 			var sort = sortOrder[Math.floor(Math.random()*(sortOrder.length))];
 			// doesnt work if you change is_commons in url to false
 			if(commons){

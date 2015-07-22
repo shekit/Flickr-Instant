@@ -37,4 +37,17 @@
 #image {
 	border: 1px solid #ccc;
 	box-shadow: 0 0 2px #ddd;
+	margin-top:10%;
+}
+
+@media (max-width:768px){
+	.logo {
+		width: 100px;
+		margin-top: 3px;
+		margin-bottom: 3px;
+	}
+
+	#image {
+		margin-top:5px;
+	}
 }
